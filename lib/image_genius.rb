@@ -1,4 +1,4 @@
-lib = File.expand_path("../image_cart", __FILE__)
+lib = File.expand_path("../image_genius", __FILE__)
 config = File.expand_path("../../config", __FILE__)
 
 $:.unshift(lib)
@@ -9,7 +9,7 @@ require 'processable_image'
 require 'app_config'
 require 'config'
 
-class ImageCart
+class ImageGenius
 
   attr_reader :images
 

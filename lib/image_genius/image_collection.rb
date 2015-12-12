@@ -26,8 +26,8 @@ class ImageCollection
   end
 
   def process_and_save
+    set_up_output_directory
     output_path = AppConfig.config.output_path
-    Dir.mkdir output_path unless File.directory? output_path
 
     @collection.each_with_index do |image, index|
       new_image_path = "#{output_path}/#{index}.jpg"
@@ -53,5 +53,27 @@ class ImageCollection
 
   def present?
     size > 0
+  end
+
+  private
+
+  def set_up_output_directory
+    verify_or_create_directory AppConfig.config.output_path
+  end
+
+  def verify_or_create_directory(path)
+    return if File.directory? path
+    return if path.length == 0
+
+    directories = path.split('/')
+    remove = directories.pop
+    directories.delete(remove)
+
+    new_path = directories.join('/')
+    verify_or_create_directory(new_path)
+
+    puts "creating directory:  #{path}"
+
+    Dir.mkdir(path)
   end
 end
