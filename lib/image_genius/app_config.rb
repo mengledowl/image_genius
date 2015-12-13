@@ -3,7 +3,7 @@ require 'singleton'
 class AppConfig
   include Singleton
 
-  attr_accessor :input_path, :output_path, :resize
+  attr_accessor :input_path, :output_path, :resize, :output_directory_policy
 
   def self.configuration(&block)
     yield(self.instance)
@@ -27,5 +27,13 @@ class AppConfig
 
   def resize
     @resize ||= "400x300"
+  end
+
+  def output_directory_policy
+    @output_directory_policy ||= :destroy
+  end
+
+  def wipe_output
+    output_directory_policy == :destroy
   end
 end

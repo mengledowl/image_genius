@@ -27,10 +27,9 @@ class ImageCollection
 
   def process_and_save
     set_up_output_directory
-    output_path = AppConfig.config.output_path
 
     @collection.each_with_index do |image, index|
-      new_image_path = "#{output_path}/#{index}.jpg"
+      new_image_path = image.new_filename
 
       FileUtils.cp image.original_filename, new_image_path
 
@@ -57,8 +56,17 @@ class ImageCollection
 
   private
 
+  def output_path
+    AppConfig.config.output_path
+  end
+
   def set_up_output_directory
-    verify_or_create_directory AppConfig.config.output_path
+    wipe_output_directory if AppConfig.config.wipe_output
+    verify_or_create_directory output_path
+  end
+
+  def wipe_output_directory
+    FileUtils.rm_rf(Dir.glob(output_path + "/*"))
   end
 
   def verify_or_create_directory(path)
