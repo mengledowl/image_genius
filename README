@@ -2,9 +2,13 @@ IMAGE GENIUS FILE UTIL
 
 =======================================================================================
 
+Requirements:
+* make sure you have imagemagick installed on your computer
+
 How to set up:
 
 * pull the code
+* run bundle install
 * open config/config.rb and set your options (input_path is the most likely to need to be changed)
 * NOTE: please do not push your changes to config.rb
 
