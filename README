@@ -1,0 +1,15 @@
+IMAGE GENIUS FILE UTIL
+
+========================================================================================================================
+
+How to set up:
+
+* pull the code
+* open config/config.rb and set your options (input_path is the most likely to need to be changed)
+* NOTE: please do not push your changes to config.rb
+
+Running the util:
+
+* cd into the project directory
+* run the command "ruby lib/image_genius.rb"
+* your output should appear in the correct folder; it may take a while when processing large numbers of image files

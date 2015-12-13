@@ -30,3 +30,5 @@ class ImageGenius
     @images.process_and_save
   end
 end
+
+ImageGenius.new.process
